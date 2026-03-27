@@ -1,7 +1,7 @@
 import scipy as sc
 import numpy as np
 
-def model(x, A, sigma, gamma, bg_val):
+def model(x-mu, A, sigma, gamma, bg_val):
     """
     Voigt profile (Breit-Wigner ⊗ Gaussian) with amplitude,
     plus a linear background.
@@ -9,6 +9,7 @@ def model(x, A, sigma, gamma, bg_val):
       sigma     - Gaussian std dev (resolution)
       gamma     - Lorentzian HWHM (natural/decay width)
       bg_val    - background intercept
+      mu        - peak center
     """
     signal = A * sc.special.voigt_profile(x, sigma, gamma)
     background = bg_val
@@ -21,7 +22,7 @@ def log_prior(C):
         return 0.0
     return -np.inf
 
-def log_likelihood(data, sigma_data, C):
+def log_likelihood(data, sigma_data, x, C):
     """Gaussian log-likelihood with per-point uncertainties."""
     residuals = (data - model(x, *C)) / sigma_data
     return -0.5 * np.sum(residuals**2)
