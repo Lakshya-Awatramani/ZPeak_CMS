@@ -16,18 +16,18 @@ def model(x, A, sigma, gamma, bg_val):
 
 def log_prior(C):
     """Uniform prior with physical boundary enforcement."""
-    A, sigma, gamma, bg_val, bg_slope = C
+    A, sigma, gamma, bg_val = C
     if A > 0 and sigma > 0 and gamma > 0:
         return 0.0
     return -np.inf
 
-def log_likelihood(data, sigma_data, C):
+def log_likelihood(C, x, data, sigma_data):
     """Gaussian log-likelihood with per-point uncertainties."""
     residuals = (data - model(x, *C)) / sigma_data
     return -0.5 * np.sum(residuals**2)
 
-def log_posterior(C, data, sigma_data):
+def log_posterior(C, x, data, sigma_data):
     lp = log_prior(C)
     if not np.isfinite(lp):
         return -np.inf
-    return lp + log_likelihood(data, sigma_data, C)
+    return lp + log_likelihood(C, x, data, sigma_data)
