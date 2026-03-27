@@ -56,7 +56,6 @@ m2_phi = m_phi[:,1]
 # This is also invaraint mass^2 in GeV but how particle physicists calculate it
 m_inv_mass2 = 2 * m1_pt * m2_pt * (np.cosh(m1_eta - m2_eta) - np.cos(m1_phi - m2_phi))
 
-
 plt.hist(np.sqrt(m_inv_mass2), bins=50, range = (70,100))
 plt.xlabel("Invariant Mass (GeV)")
 plt.ylabel("Counts")
