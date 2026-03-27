@@ -1,7 +1,7 @@
 import scipy as sc
 import numpy as np
 
-def model(x-mu, A, sigma, gamma, bg_val):
+def model(x, mu, A, sigma, gamma, bg_val):
     """
     Voigt profile (Breit-Wigner ⊗ Gaussian) with amplitude,
     plus a linear background.
@@ -11,7 +11,7 @@ def model(x-mu, A, sigma, gamma, bg_val):
       bg_val    - background intercept
       mu        - peak center
     """
-    signal = A * sc.special.voigt_profile(x, sigma, gamma)
+    signal = A * sc.special.voigt_profile(x - mu, sigma, gamma)
     background = bg_val
     return signal + background
 
