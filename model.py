@@ -1,34 +1,35 @@
-import scipy as sc
 import numpy as np
+from scipy.special import voigt_profile
 
-def model(x, mu, A, sigma, gamma, bg_val):
-    """
-    Voigt profile (Breit-Wigner ⊗ Gaussian) with amplitude,
-    plus a linear background.
-      A         - peak amplitude
-      sigma     - Gaussian std dev (resolution)
-      gamma     - Lorentzian HWHM (natural/decay width)
-      bg_val    - background intercept
-      mu        - peak center
-    """
-    signal = A * sc.special.voigt_profile(x - mu, sigma, gamma)
-    background = bg_val
+
+def voigt(x, m0, gamma, sigma):
+    return voigt_profile(x - m0, sigma, gamma)
+
+def model(bin_centers, m0, gamma, sigma, Nsig, Nbg):
+    """Predicted counts per bin: signal + flat background"""
+    signal = voigt(bin_centers, m0, gamma, sigma)
+    signal *= Nsig / np.sum(signal)  # scale to total signal events
+    background = np.full_like(bin_centers, Nbg)
     return signal + background
 
-def log_prior(C):
-    """Uniform prior with physical boundary enforcement."""
-    A, sigma, gamma, bg_val = C
-    if A > 0 and sigma > 0 and gamma > 0:
-        return 0.0
-    return -np.inf
+def log_likelihood(theta, bin_centers, observed_counts):
 
-def log_likelihood(data, sigma_data, x, C):
-    """Gaussian log-likelihood with per-point uncertainties."""
-    residuals = (data - model(x, *C)) / sigma_data
-    return -0.5 * np.sum(residuals**2)
+    """Poisson log likelihood"""
 
-def log_posterior(C, x, data, sigma_data):
-    lp = log_prior(C)
+    m0, gamma, sigma, Nsig, Nbg = theta
+    mu = model(bin_centers, m0, gamma, sigma, Nsig, Nbg)
+    
+    return np.sum(observed_counts * np.log(mu) - mu)
+
+def log_prior(theta):
+    """Flat prior within bounds"""
+    m0, gamma, sigma, Nsig, Nbg = theta
+    if not (80 < m0 < 100 and 0 < gamma < 5 and 0 < sigma < 5 and Nsig > 0 and Nbg > 0):
+        return -np.inf
+    return 0  
+
+def log_posterior(theta, bin_centers, observed_counts):
+    lp = log_prior(theta)
     if not np.isfinite(lp):
         return -np.inf
-    return lp + log_likelihood(C, x, data, sigma_data)
+    return lp + log_likelihood(theta, bin_centers, observed_counts)

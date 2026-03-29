@@ -40,11 +40,11 @@ m2_E = m_E[:,1]
 # Invaraint mass^2 (natural units(GeV))
 m_inv_mass = (m1_E + m2_E)**2 - ((m1_px + m2_px)**2 + (m1_py + m2_py)**2 + (m1_pz + m2_pz)**2)
 
-plt.hist(np.sqrt(m_inv_mass), bins=50, range = (70,100))
-plt.xlabel("Invariant Mass (GeV)")
-plt.ylabel("Counts")
-plt.axvline(x=91, color = 'red')
-plt.show()
+# plt.hist(np.sqrt(m_inv_mass), bins=50, range = (70,100))
+# plt.xlabel("Invariant Mass (GeV)")
+# plt.ylabel("Counts")
+# plt.axvline(x=91, color = 'red')
+# plt.show()
 
 m1_pt = m_pt[:,0]
 m2_pt = m_pt[:,1]
@@ -56,8 +56,8 @@ m2_phi = m_phi[:,1]
 # This is also invaraint mass^2 in GeV but how particle physicists calculate it
 m_inv_mass2 = 2 * m1_pt * m2_pt * (np.cosh(m1_eta - m2_eta) - np.cos(m1_phi - m2_phi))
 
-plt.hist(np.sqrt(m_inv_mass2), bins=50, range = (70,100))
-plt.xlabel("Invariant Mass (GeV)")
-plt.ylabel("Counts")
-plt.axvline(x=91, color = 'red')
-plt.show()
+# plt.hist(np.sqrt(m_inv_mass2), bins=50, range = (70,100))
+# plt.xlabel("Invariant Mass (GeV)")
+# plt.ylabel("Counts")
+# plt.axvline(x=91, color = 'red')
+# plt.show()
