@@ -20,7 +20,10 @@ This repository performs:
 |Project Structure.pdf|Project instructions|
 ## Requirements
 Install dependencies:
-'pip install numpy scipy matplotlib uproot dynesty emcee'
+'pip install numpy scipy matplotlib uproot dynesty emcee'.
+
+The CMS AOD data files are not stored in this repository because they are too large.
+The required dataset must be downloaded from the CERN Open Data Portal and the file path must be manually updated inside 'file_extraction.py'.
 ## How to Run
 1. Extract events:
 'python file_extraction.py'
