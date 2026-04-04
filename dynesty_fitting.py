@@ -19,10 +19,6 @@ observed_counts, _ = np.histogram(data, bins=bin_edges)
 ## Prepare for fitting with dynesty
 ndim = 5
 
-# Define 5D Correlation Matrix 
-C = np.identity(ndim)
-Cinv = np.linalg.inv(C)
-
 #Define a uniform prior transform
 def prior_transform(u):
     '''
