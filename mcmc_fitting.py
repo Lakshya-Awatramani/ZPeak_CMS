@@ -25,13 +25,3 @@ sampler.run_mcmc(starting_guesses, nsteps, progress=True)
 
 samples = sampler.get_chain(discard=500, flat=True)
 best_fit = np.median(samples, axis=0)
-
-print("Best-fit parameters:", best_fit)
-
-
-plt.hist(np.sqrt(m_inv_mass2), bins=500, range = (70,100))
-plt.plot(bin_centers, model(bin_centers, *best_fit), color="red", lw=2, label="Best-fit model") 
-plt.xlabel("Mass [GeV]") 
-plt.ylabel("Counts per bin") 
-plt.legend() 
-plt.show()
