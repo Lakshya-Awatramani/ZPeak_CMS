@@ -4,7 +4,10 @@ import uproot
 import numpy as np
 import awkward as ak
 
-file = uproot.open("Mu_PAT_data_500files_01.root")
+# Extracting file with the data from the folder. In case another files is wanted, change the
+# variable file_name
+file_name = "Mu_PAT_data_500files_01.root"
+file = uproot.open(file_name)
 tree = file["Events"]
 
 # Event "tree" is what is needed, look at the "branches"

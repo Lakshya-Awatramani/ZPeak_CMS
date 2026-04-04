@@ -20,24 +20,19 @@ This repository performs:
 |Project Structure.pdf|Project instructions|
 ## Requirements
 Install dependencies:
-'pip install numpy scipy matplotlib uproot dynesty emcee'.
+'pip install uproot numpy awkward scipy matplotlib uproot dynesty emcee'.
 
 The CMS AOD data files are not stored in this repository because they are too large.
 The required dataset must be downloaded from the CERN Open Data Portal and the file path must be manually updated inside 'file_extraction.py'.
 ## How to Run
-1. Extract events:
-'python file_extraction.py'
-2. Reconstruct invariant mass:
-'python reconstruction.py'
-3. Fit with Dynesty: 
-'python dynesty_fitting.py'
+1. Download the file from the CERN open data record. Since the files are quite big, they are not included in this repo. For this implementation we have decided to go with Mu_PAT_data_500files_01.root. In case the user wants to use a different file, download a different file and change the variable file_name in file_extraction.py.
+2. Run the Jupyter Notebook main.ipynb. It does baysian statistical inference with both the emcee (Monte Carlo Markov Chain) and the dynesty (Nested Sampling) packages. For every library, it produces a corner plot relating the parameter correlation, a trace plot and a plot comparing the fitted model to the data.
 
 Outputs: 
-- CornerPlotDynestyFitting.png
-- Dynesty comparison plot.png
-- bestfit_parameters.txt
-4. (Optional) MCMC fit:
-  'python mcmc_fitting.py'
+- Corner Plot with parameter correlation for both emcee and dynesty packages
+- Trace Plot for both emcee and dynesty packages 
+- Plot comparing fitted model with data for both emcee and dynesty pacjages
+
 ## Results
 The repository includes:
 - Posterior corner plots

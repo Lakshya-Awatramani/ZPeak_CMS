@@ -40,12 +40,6 @@ m2_E = m_E[:,1]
 # Invaraint mass^2 (natural units(GeV))
 m_inv_mass = (m1_E + m2_E)**2 - ((m1_px + m2_px)**2 + (m1_py + m2_py)**2 + (m1_pz + m2_pz)**2)
 
-# plt.hist(np.sqrt(m_inv_mass), bins=50, range = (70,100))
-# plt.xlabel("Invariant Mass (GeV)")
-# plt.ylabel("Counts")
-# plt.axvline(x=91, color = 'red')
-# plt.show()
-
 m1_pt = m_pt[:,0]
 m2_pt = m_pt[:,1]
 m1_eta = m_eta[:,0]
@@ -56,18 +50,9 @@ m2_phi = m_phi[:,1]
 # This is also invariant mass^2 in GeV but how particle physicists calculate it
 m_inv_mass2 = 2 * m1_pt * m2_pt * (np.cosh(m1_eta - m2_eta) - np.cos(m1_phi - m2_phi))
 
-# plt.hist(np.sqrt(m_inv_mass2), bins=50, range = (70,100))
-# plt.xlabel("Invariant Mass (GeV)")
-# plt.ylabel("Counts")
-# plt.axvline(x=91, color = 'red')
-# plt.show()
+
 
 #Repeat same steps for electrons
-
-# This mask filters transverse momentum and pseudorapidity according to the sample conditions
-#boundaries for pseudorapidty and transverse momentum are modified to accomodate
-#different conditions for electrons
-# It also only keeps events with exacty 2 electrons
 mask = (ak.num(e_pt) == 2) & (ak.all(np.abs(e_eta) < 2.5, axis =1)) & (ak.all( e_pt > 7, axis =1))
 
 
@@ -109,14 +94,6 @@ e2_E = e_E[:,1]
 # Invaraint mass^2 (natural units(GeV))
 e_inv_mass = (e1_E + e2_E)**2 - ((e1_px + e2_px)**2 + (e1_py + e2_py)**2 + (e1_pz + e2_pz)**2)
 
-
-# plt.hist(np.sqrt(e_inv_mass), bins=50, range = (70,100))
-# plt.xlabel("Invariant Mass (GeV)")
-# plt.ylabel("Counts")
-# plt.axvline(x=91, color = 'red')
-# plt.show()
-
-
 e1_pt = e_pt[:,0]
 e2_pt = e_pt[:,1]
 e1_eta = e_eta[:,0]
@@ -128,9 +105,3 @@ e2_phi = e_phi[:,1]
 # This is also invariant mass^2 in GeV but how particle physicists calculate it
 e_inv_mass2 = 2 * e1_pt * e2_pt * (np.cosh(e1_eta - e2_eta) - np.cos(e1_phi - e2_phi))
 
-
-# plt.hist(np.sqrt(e_inv_mass2), bins=50, range = (70,100))
-# plt.xlabel("Invariant Mass (GeV)")
-# plt.ylabel("Counts")
-# plt.axvline(x=91, color = 'red')
-# plt.show()
