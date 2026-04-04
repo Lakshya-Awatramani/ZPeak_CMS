@@ -51,7 +51,7 @@ def prior_transform(u):
     return np.array([m0, gamma, sigma, Nsig, Nbg])
 
 # Use the log_likelihood function with the prior_transform
-sampler = dynesty.NestedSampler(log_likelihood, prior_transform, ndim,
+sampler = dynesty.NestedSampler(log_likelihood, prior_transform, nlive=1000, ndim=5,
                                 logl_args=(bin_centers, observed_counts))
 sampler.run_nested()
 results = sampler.results
