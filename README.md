@@ -14,9 +14,9 @@ This repository performs:
 |file_extraction.py|Reads CMS Open Data and builds the invariant‑mass histogram|
 |reconstruction.py|Reconstructs dilepton invariant mass from 4‑vectors|
 |model.py|Defines the Z‑peak model and likelihood|
-|Defines the Z‑peak model and likelihood|Nested sampling fit + corner plot + comparison plot|
+|main.ipynb|Main notebook for nested sampling fit + corner plot + comparison plot|
 |mcmc_fitting.py|MCMC‑based parameter estimation|
-|bestfit_parameters.txt|Saved best‑fit values from Dynesty|
+|dinesty_fitting.py||Dynesty-based parameter esimation|
 |Project Structure.pdf|Project instructions|
 ## Requirements
 Install dependencies:
@@ -35,7 +35,7 @@ Outputs:
 
 ## Results
 The repository includes:
-- Posterior corner plots
+- Posterior corner and trace plots for both inference methods
 - Model vs. data comparison
 - Extracted Z‑peak mass and width
 
