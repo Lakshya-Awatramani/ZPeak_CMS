@@ -23,5 +23,6 @@ starting_guesses = np.array([91, 2.0, 2.0, max(observed_counts)*10, np.median(ob
 sampler = emcee.EnsembleSampler(nwalkers, ndim, log_posterior, args=(bin_centers, observed_counts))
 sampler.run_mcmc(starting_guesses, nsteps, progress=True)
 
+chain = sampler.get_chain()
 samples = sampler.get_chain(discard=500, flat=True)
 best_fit = np.median(samples, axis=0)
