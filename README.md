@@ -20,7 +20,7 @@ This repository performs:
 |Project Structure.pdf|Project instructions|
 ## Requirements
 Install dependencies:
-'pip install uproot numpy awkward scipy matplotlib uproot dynesty emcee'.
+'pip install uproot numpy awkward scipy matplotlib uproot dynesty emcee corner'.
 
 The CMS AOD data files are not stored in this repository because they are too large.
 The required dataset must be downloaded from the CERN Open Data Portal and the file path must be manually updated inside 'file_extraction.py'.
@@ -31,7 +31,7 @@ The required dataset must be downloaded from the CERN Open Data Portal and the f
 Outputs: 
 - Corner Plot with parameter correlation for both emcee and dynesty packages
 - Trace Plot for both emcee and dynesty packages 
-- Plot comparing fitted model with data for both emcee and dynesty pacjages
+- Plot comparing fitted model with data for both emcee and dynesty packages
 
 ## Results
 The repository includes:

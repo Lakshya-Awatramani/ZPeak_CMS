@@ -1,8 +1,8 @@
 ## Importing Libraries
 import numpy as np 
 import dynesty
-from reconstruction import m_inv_mass2
-from model import log_likelihood
+from src.reconstruction import m_inv_mass2
+from src.model import log_likelihood
 from dynesty import plotting as dyplot
 import matplotlib.pyplot as plt
 

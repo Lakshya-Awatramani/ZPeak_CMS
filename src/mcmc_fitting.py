@@ -1,8 +1,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import emcee
-from reconstruction import m_inv_mass2
-from model import *
+from src.reconstruction import m_inv_mass2
+from src.model import *
 
 # Invaraint mass data
 data = np.sqrt(m_inv_mass2)

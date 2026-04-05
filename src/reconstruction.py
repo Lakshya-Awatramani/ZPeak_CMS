@@ -1,6 +1,6 @@
 
 # Required libraries
-from file_extraction import *
+from src.file_extraction import *
 import awkward as ak
 import matplotlib.pyplot as plt
 
